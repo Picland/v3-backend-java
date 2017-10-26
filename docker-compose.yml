@@ -1,0 +1,28 @@
+version: '3.2'
+# How to configure: https://docs.docker.com/compose/compose-file/
+services:
+  mysql:
+    build:
+      context: ./registration-mysql
+    image: registration-mysql
+    ports:
+      - 3306:3306
+    restart: always
+  tomcat:
+    build:
+      context: ./registration-tomcat
+    image: registration-tomcat
+    ports:
+      - 8090:8080
+      - 8000:8000
+    volumes:
+      - ./resources/webapps:/usr/local/tomcat/webapps
+    # links is to make other containers viewable in tomcat container
+    links:
+      - mysql
+    restart: always
+  mongodb:
+    image:
+      mongo:latest
+    volumes:
+      - ./resources/mongodb:/data/db
