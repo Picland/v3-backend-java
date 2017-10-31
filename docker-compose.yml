@@ -6,7 +6,7 @@ services:
       context: ./registration-mysql
     image: registration-mysql
     ports:
-      - 3306:3306
+      - 9306:3306
     restart: always
   tomcat:
     build:
