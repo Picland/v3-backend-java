@@ -6,6 +6,6 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ComponentScan(basePackages = "com.earth.user.controller")
-@ImportResource({"classpath:spring/springMVC-servlet.xml"})
+@ImportResource({"classpath:springMVC-servlet.xml"})
 public class SpringMVCConfig {
 }

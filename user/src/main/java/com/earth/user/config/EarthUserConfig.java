@@ -8,6 +8,6 @@ import org.springframework.context.annotation.ImportResource;
 @Configuration
 @ComponentScan(basePackages = {"com.earth.user.*.service.impl", "com.earth.user.*.dao.impl"})
 //@Import() can import configs
-@ImportResource({"classpath:spring/applicationContext.xml"})
+@ImportResource({"classpath:applicationContext.xml"})
 public class EarthUserConfig {
 }
