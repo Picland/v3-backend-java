@@ -2,8 +2,10 @@ group 'com.earth'
 version '0.1'
 
 apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 tasks.withType(JavaCompile) {
@@ -41,3 +43,12 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task preBuild << {
+    println "User project dir: ${projectDir}"
+    println "User build dir: ${buildDir}"
+    println "User libs dir: ${libsDir}"
+}
+
+build.dependsOn preBuild
+//war.dependsOn build
