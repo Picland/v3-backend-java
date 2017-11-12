@@ -23,12 +23,14 @@ dependencies {
 }
 
 task deploy(dependsOn: war) << {
+    def tomcatWebDir = System.getenv("CATALINA_HOME") + "/webapps"
     childProjects.each { p ->
         def libsDir = "${p.getValue().libsDir}";
-        println "Copy from " + libsDir +" into " + resourcesDir + "/webapps"
+        println "Copy from " + libsDir + " into " + tomcatWebDir
         copy{
             from libsDir
-            into resourcesDir + "/webapps"
+            into tomcatWebDir
+//            into resourcesDir + "/webapps"
             include '*.war'
         }
     }

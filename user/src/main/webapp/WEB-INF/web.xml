@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
 
-  <display-name>weijin</display-name>
+  <display-name>muwenzi</display-name>
 
   <!--
     Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
@@ -48,9 +48,9 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-  <session-config>
-    <session-timeout>10</session-timeout>
-  </session-config>
+  <!--<session-config>-->
+    <!--<session-timeout>10</session-timeout>-->
+  <!--</session-config>-->
   <welcome-file-list>
     <welcome-file>/index.html</welcome-file>
   </welcome-file-list>

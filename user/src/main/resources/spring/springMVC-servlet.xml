@@ -11,5 +11,6 @@
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
   <mvc:annotation-driven/>
+  <context:component-scan base-package="com.earth.user.controller"/>
   <mvc:resources mapping="/**" location="/"/>
 </beans>
