@@ -22,7 +22,7 @@
         specified for component-scanning -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>com.earth.user.config.EarthUserConfig</param-value>
+    <param-value>com.earth.core.config.EarthConfig</param-value>
   </context-param>
 
   <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
@@ -31,7 +31,7 @@
   </listener>
 
   <servlet>
-    <servlet-name>springMVC</servlet-name>
+    <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextClass</param-name>
@@ -39,12 +39,12 @@
     </init-param>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>com.earth.user.config.SpringMVCConfig</param-value>
+      <param-value>com.earth.core.config.EarthConfig</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>springMVC</servlet-name>
+    <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
@@ -58,23 +58,4 @@
     <error-code>404</error-code>
     <location>/</location>
   </error-page>
-
-  <!--<filter>-->
-    <!--<filter-name>UrlRewriteFilter</filter-name>-->
-    <!--<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>-->
-  <!--</filter>-->
-  <!--<filter>-->
-    <!--<filter-name>springSecurityFilterChain</filter-name>-->
-    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-  <!--</filter>-->
-  <!--<filter-mapping>-->
-    <!--<filter-name>UrlRewriteFilter</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--<dispatcher>REQUEST</dispatcher>-->
-    <!--<dispatcher>FORWARD</dispatcher>-->
-  <!--</filter-mapping>-->
-  <!--<filter-mapping>-->
-    <!--<filter-name>springSecurityFilterChain</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-  <!--</filter-mapping>-->
 </web-app>
