@@ -24,3 +24,6 @@ build/
 
 # Gradle Files
 /.gradle/
+
+# Docker Volume
+startup/data/

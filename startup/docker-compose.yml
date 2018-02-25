@@ -1,0 +1,33 @@
+version: '2'
+services:
+  tomcat:
+    build:
+      context: ./tomcat
+    image: earth-tomcat
+    ports:
+      - 8090:8080
+      - 8000:8000
+    volumes:
+      - ./data/tomcat/webapps:/usr/local/tomcat/webapps
+      - ./data/tomcat/logs:/usr/local/tomcat/logs
+    # links is to make other containers viewable in tomcat container
+    links:
+      - mysql
+    restart: always
+  mysql: 
+    build:
+      context: ./mysql
+    image: earth-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql 
+    restart: always
+  mongo:
+    image: mongo:3.4
+  redis: 
+    image: redis:3 
+    volumes: 
+      - ./data/redis:/data 
+    ports:
+      - "6379:6379"
