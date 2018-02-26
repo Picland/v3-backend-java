@@ -14,15 +14,6 @@
 			http://www.springframework.org/schema/aop
 			http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-  <context:property-placeholder location="classpath:spring/database.properties" file-encoding="UTF-8"/>
-
-  <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-    <!--<property name="driverClassName" value="${jdbc.driver}"/>-->
-    <!--<property name="url" value="${jdbc.url}"/>-->
-    <!--<property name="username" value="${jdbc.username}"/>-->
-    <!--<property name="password" value="${jdbc.password}"/>-->
-  <!--</bean>-->
-
   <!--&lt;!&ndash;通知定义切面是什么及何时使用切面&ndash;&gt;-->
   <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
     <!--<tx:attributes>-->
