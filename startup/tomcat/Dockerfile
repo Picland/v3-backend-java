@@ -1,4 +1,4 @@
-FROM tomcat:7
+FROM tomcat:8
 LABEL maintainer="dgq.cs.se@gmail.com"
 
 # add tomcat jpda debugging environmental variables
