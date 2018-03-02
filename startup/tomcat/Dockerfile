@@ -6,7 +6,7 @@ LABEL maintainer="dgq.cs.se@gmail.com"
 ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"
 
-# start tomcat7 with remote debugging
+# start tomcat8 with remote debugging
 EXPOSE 8080
 EXPOSE 8000
 CMD ["catalina.sh", "jpda", "run"]
