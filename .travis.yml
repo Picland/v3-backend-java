@@ -1,2 +1,5 @@
 language: java
-./gradlew test
+before_install:
+  - chmod +x gradlew
+script:
+  - ./gradlew test
