@@ -56,7 +56,7 @@ task deploy << {
     println("From: " + warLib)
     println("To: " + appsDir)
     mkdir(appsDir)
-    copy{
+    copy {
         from warLib
         into appsDir
         include "Earth-Backend-0.1.war"
