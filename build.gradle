@@ -60,7 +60,7 @@ task deploy << {
         from warLib
         into appsDir
         include "Earth-Backend-0.1.war"
-        rename("Earth-Backend-0.1.war", "earth.war")
+        rename("Earth-Backend-0.1.war", "ROOT.war")
     }
 }
 
