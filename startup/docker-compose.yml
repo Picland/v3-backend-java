@@ -19,7 +19,7 @@ services:
       context: ./mysql
     image: earth-mysql
     ports:
-      - 3306:3306
+      - 3906:3306
     volumes:
       - ./data/mysql:/var/lib/mysql 
     restart: always
@@ -30,4 +30,4 @@ services:
     volumes: 
       - ./data/redis:/data 
     ports:
-      - "6379:6379"
+      - 6379:6379
