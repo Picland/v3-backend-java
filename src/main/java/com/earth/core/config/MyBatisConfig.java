@@ -8,13 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value = "classpath:spring/database.properties", encoding = "UTF-8")
-@MapperScan(basePackages = {"com.earth.*.mapper"})
+@MapperScan(basePackages = {"com.earth.user.dao"}, sqlSessionFactoryRef = "sqlSessionFactory")
 public class MyBatisConfig {
 	@Autowired
 	Environment env;
@@ -25,7 +26,7 @@ public class MyBatisConfig {
 		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
-		dataSource.setUsername(env.getProperty("jdbc.password"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));
 		return dataSource;
 	}
 
@@ -33,6 +34,16 @@ public class MyBatisConfig {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
+		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		sessionFactory.setConfiguration(configuration());
+		sessionFactory.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
 		return sessionFactory.getObject();
+	}
+
+	@Bean
+	public org.apache.ibatis.session.Configuration configuration() {
+		org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+		configuration.setMapUnderscoreToCamelCase(true);
+		return configuration;
 	}
 }
