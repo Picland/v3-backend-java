@@ -1,10 +1,7 @@
 package com.earth.user.bean;
 
-import org.apache.ibatis.type.Alias;
-
 import java.sql.Timestamp;
 
-@Alias("user")
 public class UserBean {
 	private String userId;
 
