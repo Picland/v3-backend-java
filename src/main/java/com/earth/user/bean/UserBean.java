@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class UserBean {
 	private String userId;
 
-	private String phoneNumber;
+	private String cellPhone;
 
 	private String name;
 
@@ -19,6 +19,8 @@ public class UserBean {
 
 	private Timestamp createdDateTime;
 
+	private Timestamp lastModifiedDatetime;
+
 	public String getUserId() {
 		return userId;
 	}
@@ -27,12 +29,12 @@ public class UserBean {
 		this.userId = userId;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getCellPhone() {
+		return cellPhone;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setCellPhone(String cellPhone) {
+		this.cellPhone = cellPhone;
 	}
 
 	public String getName() {
@@ -82,4 +84,12 @@ public class UserBean {
 	public void setCreatedDateTime(Timestamp createdDateTime) {
 		this.createdDateTime = createdDateTime;
 	}
+
+    public Timestamp getLastModifiedDatetime() {
+        return lastModifiedDatetime;
+    }
+
+    public void setLastModifiedDatetime(Timestamp lastModifiedDatetime) {
+        this.lastModifiedDatetime = lastModifiedDatetime;
+    }
 }

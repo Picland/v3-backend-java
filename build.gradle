@@ -37,9 +37,9 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.2'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.2'
 
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
-    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.4'
-    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.1'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.2'
 
     // Apache Commons Library
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
