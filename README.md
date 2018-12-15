@@ -15,7 +15,7 @@ docker-compose up tomcat
 
 open browser
 - the home url: `localhost:8090`
-- the spring mvc test url: `localhost:8090/users/123`
+- the spring mvc test url: `localhost:8090/api/users/123`
 
 ## Docker Build 
 
