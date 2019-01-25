@@ -4,6 +4,8 @@ import com.earth.user.bean.UserBean;
 import com.earth.user.dao.UserInfoMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +14,12 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.sql.DataSource;
-import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserInfoController {
+  private static Logger logger = LoggerFactory.getLogger(UserInfoController.class);
   @Autowired
   SqlSessionFactory sqlSessionFactory;
 
@@ -29,7 +31,9 @@ public class UserInfoController {
 
     SqlSession session = sqlSessionFactory.openSession();
     List<UserBean> userBeans = null;
+    LoggerFactory.getLogger(UserInfoController.class);
     try {
+      logger.info("Get all");
       UserInfoMapper mapper = session.getMapper(UserInfoMapper.class);
       userBeans = mapper.getAll();
     } catch (Exception e) {
