@@ -10,4 +10,8 @@
         SELECT name, gender, email FROM user_info;
     </select>
 
+    <delete id="deleteUser">
+        DELETE FROM user_info where user_id = #{userId}
+    </delete>
+
 </mapper>

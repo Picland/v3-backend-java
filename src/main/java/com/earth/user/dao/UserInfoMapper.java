@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface UserInfoMapper {
-	public UserBean getUser(String userId);
+	UserBean getUser(String userId);
 
-	public List<UserBean> getAll();
+	List<UserBean> getAll();
+
+	void deleteUser(String userId);
 }
