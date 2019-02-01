@@ -20,60 +20,37 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserInfoController {
   private static Logger logger = LoggerFactory.getLogger(UserInfoController.class);
-  @Autowired
-  SqlSessionFactory sqlSessionFactory;
+
+  private final SqlSessionFactory sqlSessionFactory;
 
   @Autowired
-  DataSource dataSource;
+  public UserInfoController(SqlSessionFactory sqlSessionFactory) {
+    this.sqlSessionFactory = sqlSessionFactory;
+  }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getAllUsers() {
-
-    SqlSession session = sqlSessionFactory.openSession();
-    List<UserBean> userBeans = null;
-    LoggerFactory.getLogger(UserInfoController.class);
-    try {
+    try (SqlSession session = sqlSessionFactory.openSession()) {
       logger.info("Get all");
       UserInfoMapper mapper = session.getMapper(UserInfoMapper.class);
-      userBeans = mapper.getAll();
+      List<UserBean> userBeans = mapper.getAll();
+      return ResponseEntity.ok().body(userBeans);
     } catch (Exception e) {
+      logger.error("Fail to get all users", e);
       throw (e);
-    } finally {
-      session.close();
     }
-//    UserBean userBean = new UserBean();
-//    userBean.setUserId(id);
-//    userBean.setPhoneNumber("18962000003");
-//    userBean.setName("小米粒222");
-//    userBean.setGender("M");
-//    userBean.setEmail("ww@qq.com");
-//    userBean.setAvatar("upload_584d24786e923bc1a4f384ebf7ea77a5.jpg");
-//    userBean.setCreatedDateTime(new Timestamp(System.currentTimeMillis()));
-    return ResponseEntity.ok().body(userBeans);
   }
 
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getUserById(@PathVariable String id) {
-
-    SqlSession session = sqlSessionFactory.openSession();
-    UserBean userBean = null;
-    try {
+    try (SqlSession session = sqlSessionFactory.openSession()) {
       UserInfoMapper mapper = session.getMapper(UserInfoMapper.class);
-      userBean = mapper.getUser(id);
+      UserBean userBean = mapper.getUser(id);
+      return ResponseEntity.ok().body(userBean);
     } catch (Exception e) {
+      logger.error(String.format("Fail to get user by %s", id), e);
       throw (e);
-    } finally {
-      session.close();
     }
-//    UserBean userBean = new UserBean();
-//    userBean.setUserId(id);
-//    userBean.setPhoneNumber("18962000003");
-//    userBean.setName("小米粒222");
-//    userBean.setGender("M");
-//    userBean.setEmail("ww@qq.com");
-//    userBean.setAvatar("upload_584d24786e923bc1a4f384ebf7ea77a5.jpg");
-//    userBean.setCreatedDateTime(new Timestamp(System.currentTimeMillis()));
-    return ResponseEntity.ok().body(userBean);
   }
 
   @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -94,7 +71,17 @@ public class UserInfoController {
 
   @DeleteMapping(value = "/{id}")
   public ResponseEntity<?> deleteUser(@PathVariable String id) {
-    return ResponseEntity.noContent().build();
+    try (SqlSession session = sqlSessionFactory.openSession()) {
+      UserInfoMapper mapper = session.getMapper(UserInfoMapper.class);
+      UserBean userBean = mapper.getUser(id);
+      if (userBean == null) {
+        return ResponseEntity.notFound().build();
+      }
+      mapper.deleteUser(id);
+      return ResponseEntity.noContent().build();
+    } catch (Exception e) {
+      logger.error(String.format("Fail to get user by %s", id), e);
+      throw (e);
+    }
   }
-
 }
