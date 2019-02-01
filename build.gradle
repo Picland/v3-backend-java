@@ -16,26 +16,32 @@ repositories {
     }
 }
 
+ext {
+    springVersion = '4.3.2.RELEASE'
+    jacksonVersion = '2.8.2'
+    slf4jVersion = '1.7.25'
+}
+
 dependencies {
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
     // spring core container module
-    compile group: 'org.springframework', name: 'spring-core', version: '4.3.2.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version: '4.3.2.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version: '4.3.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version: "$springVersion"
+    compile group: 'org.springframework', name: 'spring-beans', version: "$springVersion"
+    compile group: 'org.springframework', name: 'spring-context', version: "$springVersion"
     // spring web module
-    compile group: 'org.springframework', name: 'spring-web', version: '4.3.2.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: "$springVersion"
+    compile group: 'org.springframework', name: 'spring-webmvc', version: "$springVersion"
     // spring data access
-    compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.2.RELEASE'
-    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.2.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: "$springVersion"
+    compile group: 'org.springframework', name: 'spring-orm', version: "$springVersion"
     //spring security
     compile group: 'org.springframework.security', name:'spring-security-web', version: '4.2.3.RELEASE'
     compile group:'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'
     // aspectj
     compile group: 'aspectj', name: 'aspectjweaver', version: '1.5.4'
     // convert object to json format
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jacksonVersion"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "$jacksonVersion"
 
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
     compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
@@ -46,8 +52,8 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
 
-    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: "$slf4jVersion"
+    compile group: 'org.slf4j', name: 'slf4j-api', version: "$slf4jVersion"
 
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
